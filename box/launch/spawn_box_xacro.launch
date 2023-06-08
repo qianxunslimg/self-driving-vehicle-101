@@ -4,8 +4,8 @@
 	<include file="$(find box)/launch/spawn_xacro.launch">
 
 		<arg name="x" value="0.0"/>
-		<arg name="y" value="0.0"/>
-		<arg name="z" value="0.0"/>
+		<arg name="y" value="2.0"/>
+		<arg name="z" value="2.0"/>
 		<arg name="urdf_robot_file" value="$(find box)/urdf/box.xacro"/>
 		<arg name="robot_name" value="my_box"/>
 

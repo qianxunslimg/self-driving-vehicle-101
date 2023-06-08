@@ -1,36 +1,53 @@
 <?xml version="1.0" ?>
 
 <robot name="box">
-    <link name="base_link">
-      <collision>
-       <origin xyz="0 0 0" rpy="0 0 0"/>  
-       <geometry>
+  <!-- 定义base_link链接 -->
+  <link name="base_link">
+    <!-- 定义碰撞属性 -->
+    <collision>
+      <!-- 设置碰撞原点的位置和欧拉角 -->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <!-- 定义碰撞形状为一个盒子 -->
+      <geometry>
         <box size="1 1 1"/>
       </geometry>
     </collision>
+    <!-- 定义可视化属性 -->
     <visual>
+      <!-- 设置可视化原点的位置和欧拉角 -->
       <origin xyz="0 0 0" rpy="0 0 0"/>
+      <!-- 定义可视化形状为一个盒子 -->
       <geometry>
-        <box size="1 1 1"/>
+        <box size="2 2 2"/>
       </geometry>
     </visual>
   </link>
 
+  <!-- 定义一个固定关节：inertial_joint -->
   <joint name="inertial_joint" type="fixed">
+    <!-- 设置父链接为base_link -->
     <parent link="base_link"/>
+    <!-- 设置子链接为main_mass -->
     <child link="main_mass"/>
+    <!-- 设置关节原点的位置和欧拉角 -->
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
+  <!-- 定义main_mass链接 -->
   <link name="main_mass" type="fixed">
-   <parent link="inertial_joint"/>
-   <inertial>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <mass value="1000"/>
-    <inertia
-      ixx="166.6666"  ixy="0.000000" ixz="0.000000"
-      iyy="166.6666" iyz="0.000000"
-      izz="166.6666"/>
+    <!-- 设置父链接为inertial_joint -->
+    <parent link="inertial_joint"/>
+    <!-- 定义惯性属性 -->
+    <inertial>
+      <!-- 设置惯性原点的位置和欧拉角 -->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <!-- 设置质量为1000g -->
+      <mass value="1000"/>
+      <!-- 设置惯性张量 -->
+      <inertia
+        ixx="166.6666" ixy="0.000000" ixz="0.000000"
+        iyy="166.6666" iyz="0.000000"
+        izz="166.6666"/>
     </inertial>
   </link>
 </robot>
